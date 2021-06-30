@@ -1,3 +1,5 @@
+import 'package:movies_project/src/utils/movie_string.dart';
+
 class MoviesResult {
   int? voteCount;
   late int id;
@@ -43,10 +45,11 @@ class MoviesResult {
       voteCount: parsedJson['vote_count'],
       id: parsedJson['id'],
       video: parsedJson['video'],
-      voteAverage: parsedJson['vote_average'],
       title: parsedJson['title'],
       popularity: parsedJson['popularity'],
-      posterPath: parsedJson['poster_path'],
+      posterPath: parsedJson['poster_path'] != null
+          ? MovieStrings.imagesPath + parsedJson['poster_path']
+          : MovieStrings.defaultImage,
       originalLanguage: parsedJson['original_language'],
       originalTitle: parsedJson['original_title'],
       genreIDs: _genreListResult,

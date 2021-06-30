@@ -1,28 +1,47 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:movies_project/src/utils/movie_string.dart';
 
-import '../utils/constants.dart';
 import '../model/movies.dart';
 
 class MoviesApiProvider {
   http.Client client = http.Client();
 
-  Future<Movies> fetchMoviesList() async {
-    final response = await client.get(
+  Future<Movies> fetchTrendingMovies() async {
+    final trendingResponse = await client.get(
       Uri.parse(
-        Constants.uriClient + Constants.apiKey,
+        MovieStrings.trendingMoviesEndpoint + MovieStrings.apiKey,
       ),
     );
-    if (response.statusCode == 200) {
+    if (trendingResponse.statusCode == 200) {
       return Movies.fromJson(
         json.decode(
-          response.body,
+          trendingResponse.body,
         ),
       );
     } else {
       throw Exception(
-        Constants.moviesLoadingError,
+        MovieStrings.moviesLoadingError,
+      );
+    }
+  }
+
+  Future<Movies> fetchDiscoverMovies() async {
+    final discoverResponse = await client.get(
+      Uri.parse(
+        MovieStrings.discoverMoviesEndpoint,
+      ),
+    );
+    if (discoverResponse.statusCode == 200) {
+      return Movies.fromJson(
+        json.decode(
+          discoverResponse.body,
+        ),
+      );
+    } else {
+      throw Exception(
+        MovieStrings.moviesLoadingError,
       );
     }
   }

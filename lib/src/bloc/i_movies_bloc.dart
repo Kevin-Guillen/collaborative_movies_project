@@ -6,5 +6,9 @@ import 'bloc.dart';
 abstract class IMoviesBloc extends Bloc {
   Stream<Movies> get stream;
 
-  void fetchMovies();
+  Stream<Movies> get swiper;
+
+  void fetchTrendingMovies();
+
+  void fetchDiscoverMovies();
 }

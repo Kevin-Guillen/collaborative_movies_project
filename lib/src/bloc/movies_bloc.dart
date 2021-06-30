@@ -7,6 +7,7 @@ import 'i_movies_bloc.dart';
 class MoviesBloc extends IMoviesBloc {
   MoviesRepository _moviesRepository = MoviesRepository();
   StreamController<Movies> _moviesStreamController = StreamController();
+  StreamController<Movies> _swiper = StreamController();
 
   @override
   void initialize() {}
@@ -14,16 +15,26 @@ class MoviesBloc extends IMoviesBloc {
   @override
   void dispose() {
     _moviesStreamController.close();
+    _swiper.close();
   }
 
-  @override
-  void fetchMovies() async {
-    final movieList = await _moviesRepository.fetchAllMovies();
+  void fetchTrendingMovies() async {
+    final trendingMovieList = await _moviesRepository.fetchTrendingMovies();
+    _swiper.sink.add(
+      trendingMovieList,
+    );
+  }
+
+  void fetchDiscoverMovies() async {
+    final discoverMovieList = await _moviesRepository.fetchDiscoverMovies();
     _moviesStreamController.sink.add(
-      movieList,
+      discoverMovieList,
     );
   }
 
   @override
-  Stream<Movies> get stream => this._moviesStreamController.stream;
+  Stream<Movies> get stream => _moviesStreamController.stream;
+
+  @override
+  Stream<Movies> get swiper => _swiper.stream;
 }

@@ -6,5 +6,9 @@ import '../model/movies.dart';
 class MoviesRepository extends IMovieRepository {
   final moviesApiProvider = MoviesApiProvider();
 
-  Future<Movies> fetchAllMovies() => moviesApiProvider.fetchMoviesList();
+  Future<Movies> fetchTrendingMovies() =>
+      moviesApiProvider.fetchTrendingMovies();
+
+  Future<Movies> fetchDiscoverMovies() =>
+      moviesApiProvider.fetchDiscoverMovies();
 }
