@@ -13,7 +13,7 @@ abstract class UiConstants {
   static const double bodyPadding = 10.0;
   static const double movieTypeTextPadding = 10.0;
   static const double movieTypeTitleFontSize = 25.0;
-  static const double progressIndicatorStrokeWidth = 10.0;
+  static const double progressIndicatorStrokeWidth = 5.0;
   static const double swiperCardsHeight = 250.0;
   static const double swiperCardsWidth = 250.0;
   static const double swiperProgressIndicatorTopPadding = 120.0;

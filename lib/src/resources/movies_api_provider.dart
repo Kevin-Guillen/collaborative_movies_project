@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:movies_project/src/utils/movie_string.dart';
-
+import '../utils/movie_string.dart';
 import '../model/movies.dart';
 
 class MoviesApiProvider {

@@ -1,4 +1,4 @@
-import 'package:movies_project/src/utils/movie_string.dart';
+import '../utils/movie_string.dart';
 
 class MoviesResult {
   int? voteCount;
