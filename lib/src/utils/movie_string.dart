@@ -8,4 +8,6 @@ abstract class MovieStrings {
   static const String imagesPath = 'https://image.tmdb.org/t/p/w185';
   static const String defaultImage =
       'https://www.lyon-ortho-clinic.com/files/cto_layout/img/placeholder/desktop_devices.jpg';
+  static const String uriSearchClient =
+      'https://api.themoviedb.org/3/search/movie?api_key=' + apiKey + "&query=";
 }

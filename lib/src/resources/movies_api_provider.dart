@@ -44,4 +44,23 @@ class MoviesApiProvider {
       );
     }
   }
+
+  Future<Movies> searchByMovieName(String movieName) async {
+    final searchResponse = await client.get(
+      Uri.parse(
+        MovieStrings.uriSearchClient + movieName,
+      ),
+    );
+    if (searchResponse.statusCode == 200) {
+      return Movies.fromJson(
+        json.decode(
+          searchResponse.body,
+        ),
+      );
+    } else {
+      throw Exception(
+        MovieStrings.moviesLoadingError,
+      );
+    }
+  }
 }

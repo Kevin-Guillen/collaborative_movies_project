@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../bloc/i_movies_bloc.dart';
 import '../widgets/card_swiper.dart';
 import '../widgets/grid_view.dart';
 import '../model/movies.dart';
@@ -6,7 +7,9 @@ import '../bloc/movies_bloc.dart';
 import '../utils/ui_constants.dart';
 
 class MoviesPage extends StatefulWidget {
-  const MoviesPage({Key? key}) : super(key: key);
+  final IMoviesBloc bloc;
+
+  const MoviesPage({Key? key, required this.bloc}) : super(key: key);
 
   @override
   _MoviesPageState createState() => _MoviesPageState();
@@ -102,7 +105,9 @@ class _MoviesPageState extends State<MoviesPage> {
                     filled: true,
                     fillColor: Colors.white12,
                   ),
-                  onSubmitted: (nameMovie) {},
+                  onChanged: (textField) {
+                    _moviesBloc.fetchByMovieName(textField);
+                  },
                 ),
               ),
             ],
@@ -118,6 +123,7 @@ class _MoviesPageState extends State<MoviesPage> {
             children: <Widget>[
               CardSwiper(
                 trendingMovies: _trendingMovies,
+                bloc: _moviesBloc,
               ),
               GridMovies(
                 discoverMovies: _discoverMovies,
