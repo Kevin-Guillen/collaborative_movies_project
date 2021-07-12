@@ -13,5 +13,5 @@ abstract class IMoviesBloc extends Bloc {
 
   void fetchByMovieName(String textField);
 
-  bool get isTextfieldEmpty;
+  bool get isTextFieldEmpty;
 }

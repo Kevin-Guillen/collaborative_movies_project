@@ -4,7 +4,7 @@ import '../resources/movies_repository.dart';
 import 'i_movies_bloc.dart';
 
 class MoviesBloc extends IMoviesBloc {
-  bool isTextfieldEmpty = true;
+  bool isTextFieldEmpty = true;
   MoviesRepository _moviesRepository = MoviesRepository();
   StreamController<Movies> _trendingMoviesStream =
       StreamController<Movies>.broadcast();
@@ -46,7 +46,7 @@ class MoviesBloc extends IMoviesBloc {
         searchMoviesResults,
       );
     }
-    isTextfieldEmpty = textField.isEmpty ? true : false;
+    isTextFieldEmpty = textField.isEmpty ? true : false;
   }
 
   @override

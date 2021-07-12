@@ -17,21 +17,25 @@ class MoviesPage extends StatefulWidget {
 
 class _MoviesPageState extends State<MoviesPage> {
   MoviesBloc _moviesBloc = MoviesBloc();
-  Movies? _trendingMovies;
-  Movies? _discoverMovies;
+  Movies? _swiperTrendingMovies;
+  Movies? _gridDiscoverMovies;
 
   void _getTrendingMovies() {
-    _moviesBloc.cardSwiperMoviesStream.listen((getTrendingMoviesEvent) {
-      _trendingMovies = getTrendingMoviesEvent;
-      setState(() {});
-    });
+    _moviesBloc.cardSwiperMoviesStream.listen(
+      (getTrendingMoviesEvent) {
+        _swiperTrendingMovies = getTrendingMoviesEvent;
+        setState(() {});
+      },
+    );
   }
 
   void _getDiscoverMovies() {
-    _moviesBloc.gridMoviesStream.listen((getDiscoverMoviesEvent) {
-      _discoverMovies = getDiscoverMoviesEvent;
-      setState(() {});
-    });
+    _moviesBloc.gridMoviesStream.listen(
+      (getDiscoverMoviesEvent) {
+        _gridDiscoverMovies = getDiscoverMoviesEvent;
+        setState(() {});
+      },
+    );
   }
 
   @override
@@ -122,11 +126,11 @@ class _MoviesPageState extends State<MoviesPage> {
           child: Column(
             children: <Widget>[
               CardSwiper(
-                trendingMovies: _trendingMovies,
-                bloc: _moviesBloc,
+                trendingMovies: _swiperTrendingMovies,
+                isTextFieldEmpty: _moviesBloc.isTextFieldEmpty,
               ),
               GridMovies(
-                discoverMovies: _discoverMovies,
+                discoverMovies: _gridDiscoverMovies,
               ),
             ],
           ),

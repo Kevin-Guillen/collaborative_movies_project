@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import '../bloc/i_movies_bloc.dart';
 import '../model/movies.dart';
 import '../utils/ui_constants.dart';
+import '../utils/movie_string.dart';
 
 class CardSwiper extends StatelessWidget {
-  final IMoviesBloc bloc;
+  final bool isTextFieldEmpty;
+
   final Movies? trendingMovies;
 
-  CardSwiper({required this.trendingMovies, required this.bloc});
+  CardSwiper({
+    required this.trendingMovies,
+    required this.isTextFieldEmpty,
+  });
 
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +25,9 @@ class CardSwiper extends StatelessWidget {
                 bottom: UiConstants.movieTypeTextPadding,
               ),
               child: new Text(
-                bloc.isTextfieldEmpty ? "Trending Movies" : "Search results",
+                isTextFieldEmpty
+                    ? MovieStrings.ifTrendingMoviesTitle
+                    : MovieStrings.ifSearchingMoviesTitle,
                 style: TextStyle(
                   fontSize: UiConstants.movieTypeTitleFontSize,
                   color: Colors.grey,
@@ -43,6 +49,9 @@ class CardSwiper extends StatelessWidget {
                         fit: BoxFit.fill,
                       );
                     },
+                    control: SwiperControl(
+                      color: Colors.purple,
+                    ),
                     itemCount: trendingMovies!.results.length,
                     itemWidth: UiConstants.swiperCardsWidth,
                     layout: SwiperLayout.STACK,
