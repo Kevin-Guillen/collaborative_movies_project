@@ -1,15 +1,9 @@
 import 'movie_result.dart';
 
 class Movies {
-  late final int page;
-  late final int totalResults;
-  late final int totalPages;
   late final List<MoviesResult> results;
 
   Movies({
-    required this.page,
-    required this.totalResults,
-    required this.totalPages,
     required this.results,
   });
 
@@ -21,9 +15,6 @@ class Movies {
     }
 
     return Movies(
-      page: parsedJson['page'],
-      totalResults: parsedJson['total_results'],
-      totalPages: parsedJson['total_pages'],
       results: _movieList,
     );
   }

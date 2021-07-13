@@ -10,6 +10,12 @@ abstract class MovieStrings {
       'https://www.lyon-ortho-clinic.com/files/cto_layout/img/placeholder/desktop_devices.jpg';
   static const String uriSearchClient =
       'https://api.themoviedb.org/3/search/movie?api_key=' + apiKey + "&query=";
+  static const String inputText = 'Search for a movie...';
   static const String ifSearchingMoviesTitle = 'Search Results';
   static const String ifTrendingMoviesTitle = 'Trending Movies';
+  static const String discoverMoviesTitle = 'Discover Movies';
+  static const String defaultTitle = 'Could not find title';
+  static const String defaultOverview = 'Could not find overview';
+  static const String defaultReleaseDate = 'Could not find date';
+  static const String defaultVoteAverage = '-';
 }

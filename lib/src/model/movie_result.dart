@@ -1,36 +1,25 @@
 import '../utils/movie_string.dart';
 
 class MoviesResult {
-  int? voteCount;
   late int id;
-  bool? video;
-  double? voteAverage;
-  String? title;
-  double? popularity;
-  String? posterPath;
-  String? originalLanguage;
+  late num voteAverage;
+  late String title;
+  late String posterPath;
   String? originalTitle;
   List<int> genreIDs;
-  String? backdropPath;
-  bool? adult;
-  String? overview;
-  String? releaseDate;
+  late bool adult;
+  late String overView;
+  late String releaseDate;
 
-  MoviesResult(
-      {this.voteCount,
-      required this.id,
-      this.video,
-      this.voteAverage,
-      this.title,
-      this.popularity,
-      this.posterPath,
-      this.originalLanguage,
-      this.originalTitle,
-      required this.genreIDs,
-      this.backdropPath,
-      this.adult,
-      this.overview,
-      this.releaseDate});
+  MoviesResult({
+    required this.id,
+    required this.voteAverage,
+    required this.title,
+    required this.posterPath,
+    required this.genreIDs,
+    required this.overView,
+    required this.releaseDate,
+  });
 
   factory MoviesResult.fromJson(
     Map<String, dynamic> parsedJson,
@@ -42,21 +31,21 @@ class MoviesResult {
     }
 
     return MoviesResult(
-      voteCount: parsedJson['vote_count'],
       id: parsedJson['id'],
-      video: parsedJson['video'],
-      title: parsedJson['title'],
-      popularity: parsedJson['popularity'],
+      voteAverage: parsedJson['vote_average'] != null
+          ? parsedJson['vote_average']
+          : MovieStrings.defaultVoteAverage,
+      title: parsedJson['title'] != null
+          ? parsedJson['title']
+          : MovieStrings.defaultTitle,
       posterPath: parsedJson['poster_path'] != null
           ? MovieStrings.imagesPath + parsedJson['poster_path']
           : MovieStrings.defaultImage,
-      originalLanguage: parsedJson['original_language'],
-      originalTitle: parsedJson['original_title'],
       genreIDs: _genreListResult,
-      backdropPath: parsedJson['backdrop_path'],
-      adult: parsedJson['adult'],
-      overview: parsedJson['overview'],
-      releaseDate: parsedJson['release_date'],
+      overView: parsedJson['overview'],
+      releaseDate: parsedJson['release_date'] != null
+          ? parsedJson['release_date']
+          : MovieStrings.defaultReleaseDate,
     );
   }
 }
