@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../bloc/i_movies_bloc.dart';
 import '../widgets/card_swiper.dart';
 import '../widgets/grid_view.dart';
 import '../model/movies.dart';
@@ -6,7 +7,9 @@ import '../bloc/movies_bloc.dart';
 import '../utils/ui_constants.dart';
 
 class MoviesPage extends StatefulWidget {
-  const MoviesPage({Key? key}) : super(key: key);
+  final IMoviesBloc bloc;
+
+  const MoviesPage({Key? key, required this.bloc}) : super(key: key);
 
   @override
   _MoviesPageState createState() => _MoviesPageState();
@@ -14,21 +17,25 @@ class MoviesPage extends StatefulWidget {
 
 class _MoviesPageState extends State<MoviesPage> {
   MoviesBloc _moviesBloc = MoviesBloc();
-  Movies? _trendingMovies;
-  Movies? _discoverMovies;
+  Movies? _swiperTrendingMovies;
+  Movies? _gridDiscoverMovies;
 
   void _getTrendingMovies() {
-    _moviesBloc.cardSwiperMoviesStream.listen((getTrendingMoviesEvent) {
-      _trendingMovies = getTrendingMoviesEvent;
-      setState(() {});
-    });
+    _moviesBloc.cardSwiperMoviesStream.listen(
+      (getTrendingMoviesEvent) {
+        _swiperTrendingMovies = getTrendingMoviesEvent;
+        setState(() {});
+      },
+    );
   }
 
   void _getDiscoverMovies() {
-    _moviesBloc.gridMoviesStream.listen((getDiscoverMoviesEvent) {
-      _discoverMovies = getDiscoverMoviesEvent;
-      setState(() {});
-    });
+    _moviesBloc.gridMoviesStream.listen(
+      (getDiscoverMoviesEvent) {
+        _gridDiscoverMovies = getDiscoverMoviesEvent;
+        setState(() {});
+      },
+    );
   }
 
   @override
@@ -102,7 +109,9 @@ class _MoviesPageState extends State<MoviesPage> {
                     filled: true,
                     fillColor: Colors.white12,
                   ),
-                  onSubmitted: (nameMovie) {},
+                  onChanged: (textField) {
+                    _moviesBloc.fetchByMovieName(textField);
+                  },
                 ),
               ),
             ],
@@ -117,10 +126,11 @@ class _MoviesPageState extends State<MoviesPage> {
           child: Column(
             children: <Widget>[
               CardSwiper(
-                trendingMovies: _trendingMovies,
+                trendingMovies: _swiperTrendingMovies,
+                isTextFieldEmpty: _moviesBloc.isTextFieldEmpty,
               ),
               GridMovies(
-                discoverMovies: _discoverMovies,
+                discoverMovies: _gridDiscoverMovies,
               ),
             ],
           ),

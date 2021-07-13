@@ -10,4 +10,8 @@ abstract class IMoviesBloc extends Bloc {
   void fetchTrendingMovies();
 
   void fetchDiscoverMovies();
+
+  void fetchByMovieName(String textField);
+
+  bool get isTextFieldEmpty;
 }

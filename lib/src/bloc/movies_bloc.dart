@@ -4,6 +4,7 @@ import '../resources/movies_repository.dart';
 import 'i_movies_bloc.dart';
 
 class MoviesBloc extends IMoviesBloc {
+  bool isTextFieldEmpty = true;
   MoviesRepository _moviesRepository = MoviesRepository();
   StreamController<Movies> _trendingMoviesStream =
       StreamController<Movies>.broadcast();
@@ -31,6 +32,21 @@ class MoviesBloc extends IMoviesBloc {
     _discoverMoviesStream.sink.add(
       discoverMovieList,
     );
+  }
+
+  @override
+  void fetchByMovieName(String textField) async {
+    if (textField.isEmpty) {
+      fetchTrendingMovies();
+    } else {
+      final searchMoviesResults = await _moviesRepository.searchByMovieName(
+        textField,
+      );
+      _trendingMoviesStream.sink.add(
+        searchMoviesResults,
+      );
+    }
+    isTextFieldEmpty = textField.isEmpty ? true : false;
   }
 
   @override
