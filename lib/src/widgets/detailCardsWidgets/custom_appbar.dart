@@ -4,10 +4,10 @@ import '../../utils/ui_constants.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     Key? key,
-    required this.posterPath,
+    required this.movieImage,
   }) : super(key: key);
 
-  final String posterPath;
+  final String movieImage;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
       expandedHeight: UiConstants.movieDetailsAppBarExpandedHeight,
       flexibleSpace: FlexibleSpaceBar(
         background: Image.network(
-          posterPath,
+          movieImage,
           fit: BoxFit.fill,
         ),
       ),

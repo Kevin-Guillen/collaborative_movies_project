@@ -17,6 +17,9 @@ abstract class UiConstants {
   static const double searchBarSidesPadding = 22.0;
   static const double searchTextPadding = 15.0;
 
+  // widgets/movie_details_page
+  static const double detailsSizeBoxHeight = 10.0;
+
   // widgets/card_swiper
   static const double swiperCardsHeight = 250.0;
   static const double swiperCardsWidth = 250.0;

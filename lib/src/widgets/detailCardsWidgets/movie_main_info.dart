@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../utils/ui_constants.dart';
 
-class PosterTitle extends StatelessWidget {
-  const PosterTitle({
+class MovieMainInfo extends StatelessWidget {
+  const MovieMainInfo({
     Key? key,
-    required this.posterPath,
+    required this.movieImage,
     required this.id,
     required this.title,
     required this.releaseDate,
     required this.voteAverage,
   }) : super(key: key);
 
-  final String posterPath;
+  final String movieImage;
   final int id;
   final String title;
   final String releaseDate;
@@ -20,24 +20,23 @@ class PosterTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: UiConstants.widgetPadding),
+      padding: EdgeInsets.symmetric(
+        horizontal: UiConstants.widgetPadding,
+      ),
       child: Row(
         children: <Widget>[
-          Hero(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                UiConstants.posterPathBorderRadius,
-              ),
-              child: Image(
-                image: NetworkImage(
-                  posterPath,
-                ),
-                height: UiConstants.posterPathHeight,
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(
+              UiConstants.posterPathBorderRadius,
             ),
-            tag: id,
+            child: Image(
+              image: NetworkImage(
+                movieImage,
+              ),
+              height: UiConstants.posterPathHeight,
+            ),
           ),
-          SizedBox(
+          const SizedBox(
             width: UiConstants.movieInfoSizeBox,
           ),
           Flexible(
@@ -47,12 +46,15 @@ class PosterTitle extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
+                    color: Colors.white,
                     fontSize: UiConstants.movieTitleFontSize,
+                    fontFamily: 'Play-Bold',
                   ),
                 ),
                 Text(
                   releaseDate,
                   style: TextStyle(
+                    color: Colors.grey,
                     fontSize: UiConstants.releaseDateFontSize,
                   ),
                 ),

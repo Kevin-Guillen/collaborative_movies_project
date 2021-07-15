@@ -47,7 +47,7 @@ class CardSwiper extends StatelessWidget {
                     ) {
                       return InkWell(
                         child: Image.network(
-                          trendingMovies!.results[index].posterPath,
+                          trendingMovies!.results[index].posterPath!,
                           fit: BoxFit.fill,
                         ),
                         onTap: () {

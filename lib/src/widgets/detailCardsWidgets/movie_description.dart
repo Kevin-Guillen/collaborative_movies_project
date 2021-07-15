@@ -19,7 +19,9 @@ class MovieDescription extends StatelessWidget {
       child: Text(
         overView,
         style: TextStyle(
+          color: Colors.white,
           fontSize: UiConstants.descriptionFontSize,
+          fontFamily: 'Play-Bold',
         ),
         textAlign: TextAlign.justify,
       ),

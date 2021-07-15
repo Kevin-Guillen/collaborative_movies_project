@@ -60,7 +60,7 @@ class GridMovies extends StatelessWidget {
                             ),
                             child: InkWell(
                               child: Image.network(
-                                discoverMovies!.results[index].posterPath,
+                                discoverMovies!.results[index].posterPath!,
                                 fit: BoxFit.fill,
                               ),
                               onTap: () {
