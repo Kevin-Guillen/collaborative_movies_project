@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../model/movies.dart';
-import '../utils/ui_constants.dart';
+import '../../ui/movies_details_page.dart';
+import '../../model/movies.dart';
+import '../../utils/ui_constants.dart';
+import '../../utils/movie_string.dart';
 
 class GridMovies extends StatelessWidget {
   final Movies? discoverMovies;
@@ -18,7 +20,7 @@ class GridMovies extends StatelessWidget {
               bottom: UiConstants.movieTypeTextPadding,
             ),
             child: Text(
-              'Discover movies',
+              MovieStrings.discoverMoviesTitle,
               style: TextStyle(
                 fontSize: UiConstants.movieTypeTitleFontSize,
                 color: Colors.grey,
@@ -56,9 +58,21 @@ class GridMovies extends StatelessWidget {
                                 UiConstants.gridCardsBorderRadius,
                               ),
                             ),
-                            child: Image.network(
-                              discoverMovies!.results[index].posterPath!,
-                              fit: BoxFit.cover,
+                            child: InkWell(
+                              child: Image.network(
+                                discoverMovies!.results[index].posterPath!,
+                                fit: BoxFit.fill,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MovieDetailsPage(
+                                      discoverMovies!.results[index],
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ),

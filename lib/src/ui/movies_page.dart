@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../bloc/i_movies_bloc.dart';
-import '../widgets/card_swiper.dart';
-import '../widgets/grid_view.dart';
+import '../widgets/homeScreenWidgets/card_swiper.dart';
+import '../widgets/homeScreenWidgets/grid_view.dart';
 import '../model/movies.dart';
 import '../bloc/movies_bloc.dart';
 import '../utils/ui_constants.dart';
+import '../utils/movie_string.dart';
 
 class MoviesPage extends StatefulWidget {
   final IMoviesBloc bloc;
@@ -91,7 +92,7 @@ class _MoviesPageState extends State<MoviesPage> {
                     fontFamily: 'Play-Bold',
                   ),
                   decoration: InputDecoration(
-                    hintText: "Search for a movie...",
+                    hintText: MovieStrings.inputText,
                     hintStyle: const TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w600,

@@ -1,10 +1,10 @@
 import 'movie_result.dart';
 
 class Movies {
-  late final int page;
-  late final int totalResults;
-  late final int totalPages;
-  late final List<MoviesResult> results;
+  final int page;
+  final int totalResults;
+  final int totalPages;
+  final List<MoviesResult> results;
 
   Movies({
     required this.page,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'bloc/movies_bloc.dart';
 import 'ui/movies_page.dart';
 
