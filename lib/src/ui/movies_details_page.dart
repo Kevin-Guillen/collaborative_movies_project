@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:movies_widgets/movies_project_widgets.dart';
 import '../utils/ui_constants.dart';
-import '../widgets/detailCardsWidgets/custom_appbar.dart';
-import '../widgets/detailCardsWidgets/movie_description.dart';
-import '../model/movie_result.dart';
-import '../widgets/detailCardsWidgets/movie_main_info.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  const MovieDetailsPage(
-    this.data, {
+  const MovieDetailsPage({
     Key? key,
+    required this.overView,
+    required this.movieImage,
+    required this.title,
+    required this.releaseDate,
+    required this.voteAverage,
   }) : super(key: key);
 
-  final MoviesResult data;
+  final String overView;
+  final String movieImage;
+  final String title;
+  final String releaseDate;
+  final num voteAverage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class MovieDetailsPage extends StatelessWidget {
         child: CustomScrollView(
           slivers: <Widget>[
             CustomAppBar(
-              movieImage: data.posterPath!,
+              movieImage: movieImage,
             ),
             SliverList(
               delegate: SliverChildListDelegate(
@@ -34,15 +39,27 @@ class MovieDetailsPage extends StatelessWidget {
                   const SizedBox(
                     height: UiConstants.detailsSizeBoxHeight,
                   ),
-                  MovieMainInfo(
-                    movieImage: data.posterPath!,
-                    id: data.id,
-                    title: data.title,
-                    releaseDate: data.releaseDate,
-                    voteAverage: data.voteAverage,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: UiConstants.widgetPadding,
+                    ),
+                    child: Row(
+                      children: [
+                        MovieDetailsImage(
+                          movieImage: movieImage,
+                        ),
+                        Expanded(
+                          child: MovieMainInfo(
+                            title: title,
+                            releaseDate: releaseDate,
+                            voteAverage: voteAverage.toString(),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   MovieDescription(
-                    overView: data.overView!,
+                    overView: overView,
                   ),
                 ],
               ),

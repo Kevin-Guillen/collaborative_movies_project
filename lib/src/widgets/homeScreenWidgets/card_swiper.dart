@@ -55,7 +55,15 @@ class CardSwiper extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => MovieDetailsPage(
-                                trendingMovies!.results[index],
+                                movieImage:
+                                    trendingMovies!.results[index].posterPath!,
+                                overView:
+                                    trendingMovies!.results[index].overView!,
+                                releaseDate:
+                                    trendingMovies!.results[index].releaseDate,
+                                title: trendingMovies!.results[index].title,
+                                voteAverage:
+                                    trendingMovies!.results[index].voteAverage,
                               ),
                             ),
                           );
