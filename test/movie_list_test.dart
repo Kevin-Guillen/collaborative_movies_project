@@ -9,6 +9,7 @@ import 'package:movies_project/src/ui/movies_page.dart';
 import 'package:movies_project/src/widgets/homeScreenWidgets/card_swiper.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'movie_list_test.mocks.dart';
+import 'package:movies_project/src/utils/tests_string.dart';
 
 @GenerateMocks([MoviesRepository])
 void main() {
@@ -20,9 +21,9 @@ void main() {
       repository = MockMoviesRepository();
       movie = Movies(
         results: [],
-        page: 2,
-        totalPages: 2,
-        totalResults: 2,
+        page: TestingStrings.defaultPage,
+        totalPages: TestingStrings.defaultTotalPages,
+        totalResults: TestingStrings.defaultTotalResults,
       );
       bloc = MoviesBloc(repository);
       when(repository.fetchTrendingMovies()).thenAnswer(
@@ -34,10 +35,10 @@ void main() {
     },
   );
   group(
-    "Movies Page testing",
+    TestingStrings.movieListTestGroupString,
     () {
       testWidgets(
-        "Swiper and grid",
+        TestingStrings.movieListTestDescription,
         (WidgetTester tester) async {
           final moviesPage = MaterialApp(
             home: MoviesPage(

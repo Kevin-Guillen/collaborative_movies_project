@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movies_project/src/model/movies.dart';
 import 'package:movies_project/src/resources/movies_api_provider.dart';
+import 'package:movies_project/src/utils/tests_string.dart';
 
 void main() {
   late MoviesApiProvider moviesApiProvider;
@@ -11,10 +12,10 @@ void main() {
   );
 
   group(
-    "Api testing",
+    TestingStrings.apiTestGroupString,
     () {
       test(
-        "Trending Movies",
+        TestingStrings.trendingMoviesTestDescription,
         () async {
           Movies movie = await moviesApiProvider.fetchTrendingMovies();
           expect(
@@ -25,7 +26,7 @@ void main() {
       );
 
       test(
-        "Discover Movies",
+        TestingStrings.discoverMoviesTestDescription,
         () async {
           Movies movie = await moviesApiProvider.fetchDiscoverMovies();
           expect(
@@ -36,10 +37,10 @@ void main() {
       );
 
       test(
-        "Movie by search",
+        TestingStrings.searchMovieTestDescription,
         () async {
           Movies movie = await moviesApiProvider.searchByMovieName(
-            "the",
+            TestingStrings.defaultMovieSearch,
           );
           expect(
             movie.results,
