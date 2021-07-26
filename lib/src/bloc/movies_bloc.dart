@@ -5,11 +5,14 @@ import 'i_movies_bloc.dart';
 
 class MoviesBloc extends IMoviesBloc {
   bool isTextFieldEmpty = true;
-  MoviesRepository _moviesRepository = MoviesRepository();
+  late MoviesRepository _moviesRepository;
   StreamController<Movies> _trendingMoviesStream =
       StreamController<Movies>.broadcast();
   StreamController<Movies> _discoverMoviesStream =
       StreamController<Movies>.broadcast();
+
+  MoviesBloc([MoviesRepository? moviesRepository])
+      : _moviesRepository = moviesRepository ?? MoviesRepository();
 
   @override
   void initialize() {}
