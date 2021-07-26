@@ -24,6 +24,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_swiper_null_safety: ^1.0.2
+  movies_widgets:
+    git:
+      url: https://github.com/Kevin-Guillen/Movies_Widgets
+      ref: master
 
 
 

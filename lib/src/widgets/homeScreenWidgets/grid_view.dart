@@ -68,7 +68,16 @@ class GridMovies extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => MovieDetailsPage(
-                                      discoverMovies!.results[index],
+                                      movieImage: discoverMovies!
+                                          .results[index].posterPath!,
+                                      overView: discoverMovies!
+                                          .results[index].overView!,
+                                      releaseDate: discoverMovies!
+                                          .results[index].releaseDate,
+                                      title:
+                                          discoverMovies!.results[index].title,
+                                      voteAverage: discoverMovies!
+                                          .results[index].voteAverage,
                                     ),
                                   ),
                                 );

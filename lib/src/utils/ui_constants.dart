@@ -41,7 +41,7 @@ abstract class UiConstants {
   static const double widgetPadding = 20.0;
   static const double posterPathBorderRadius = 20.0;
   static const double posterPathHeight = 150.0;
-  static const double movieInfoSizeBox = 10.0;
+  static const double movieInfoPaddingLeft = 10.0;
   static const double movieTitleFontSize = 30.0;
   static const double releaseDateFontSize = 20.0;
   static const double voteAverageFontSize = 36.0;
