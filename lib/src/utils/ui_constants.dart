@@ -6,7 +6,7 @@ abstract class UiConstants {
   static const double progressIndicatorStrokeWidth = 5.0;
 
   // movies_page appBar
-  static const double appBarHeight = 110.0;
+  static const double appBarHeight = 150.0;
   static const double appBarTopPadding = 20.0;
   static const double titleFontSize = 40.0;
 

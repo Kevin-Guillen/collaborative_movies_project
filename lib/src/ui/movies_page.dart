@@ -3,7 +3,6 @@ import '../bloc/i_movies_bloc.dart';
 import '../widgets/homeScreenWidgets/card_swiper.dart';
 import '../widgets/homeScreenWidgets/grid_view.dart';
 import '../model/movies.dart';
-import '../bloc/movies_bloc.dart';
 import '../utils/ui_constants.dart';
 import '../utils/movie_string.dart';
 
@@ -17,12 +16,11 @@ class MoviesPage extends StatefulWidget {
 }
 
 class _MoviesPageState extends State<MoviesPage> {
-  MoviesBloc _moviesBloc = MoviesBloc();
   Movies? _swiperTrendingMovies;
   Movies? _gridDiscoverMovies;
 
   void _getTrendingMovies() {
-    _moviesBloc.cardSwiperMoviesStream.listen(
+    widget.bloc.cardSwiperMoviesStream.listen(
       (getTrendingMoviesEvent) {
         _swiperTrendingMovies = getTrendingMoviesEvent;
         setState(() {});
@@ -31,7 +29,7 @@ class _MoviesPageState extends State<MoviesPage> {
   }
 
   void _getDiscoverMovies() {
-    _moviesBloc.gridMoviesStream.listen(
+    widget.bloc.gridMoviesStream.listen(
       (getDiscoverMoviesEvent) {
         _gridDiscoverMovies = getDiscoverMoviesEvent;
         setState(() {});
@@ -42,8 +40,8 @@ class _MoviesPageState extends State<MoviesPage> {
   @override
   void initState() {
     super.initState();
-    _moviesBloc.fetchTrendingMovies();
-    _moviesBloc.fetchDiscoverMovies();
+    widget.bloc.fetchTrendingMovies();
+    widget.bloc.fetchDiscoverMovies();
     _getTrendingMovies();
     _getDiscoverMovies();
   }
@@ -111,7 +109,7 @@ class _MoviesPageState extends State<MoviesPage> {
                     fillColor: Colors.white12,
                   ),
                   onChanged: (textField) {
-                    _moviesBloc.fetchByMovieName(textField);
+                    widget.bloc.fetchByMovieName(textField);
                   },
                 ),
               ),
@@ -128,7 +126,7 @@ class _MoviesPageState extends State<MoviesPage> {
             children: <Widget>[
               CardSwiper(
                 trendingMovies: _swiperTrendingMovies,
-                isTextFieldEmpty: _moviesBloc.isTextFieldEmpty,
+                isTextFieldEmpty: widget.bloc.isTextFieldEmpty,
               ),
               GridMovies(
                 discoverMovies: _gridDiscoverMovies,
