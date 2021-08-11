@@ -20,4 +20,5 @@ abstract class MovieStrings {
   static const String defaultOverview = 'Could not find overview';
   static const String defaultReleaseDate = 'Could not find date';
   static const String defaultVoteAverage = '-';
+  static const String backButtonText = "BACK";
 }

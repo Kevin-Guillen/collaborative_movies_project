@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/back_button.dart';
 import 'package:movies_widgets/movies_project_widgets.dart';
 import '../utils/ui_constants.dart';
 
@@ -21,12 +22,19 @@ class MovieDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(
+          UiConstants.paddingBackButtonDetails,
+        ),
+        child: MovieDetailButton(),
+      ),
       body: Container(
         padding: const EdgeInsets.all(
           UiConstants.bodyPadding,
         ),
         decoration: const BoxDecoration(
-          color: Colors.black87,
+          color: Colors.black,
         ),
         child: CustomScrollView(
           slivers: <Widget>[

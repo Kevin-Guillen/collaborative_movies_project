@@ -5,7 +5,7 @@ import 'ui/movies_page.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  MoviesBloc _moviesBloc = MoviesBloc();
+  final MoviesBloc _moviesBloc = MoviesBloc();
 
   @override
   Widget build(BuildContext context) {
