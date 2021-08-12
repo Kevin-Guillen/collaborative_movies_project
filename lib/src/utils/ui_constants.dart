@@ -45,4 +45,11 @@ abstract class UiConstants {
   static const double movieTitleFontSize = 30.0;
   static const double releaseDateFontSize = 20.0;
   static const double voteAverageFontSize = 36.0;
+
+  // back_button
+  static const double paddingBackButtonDetails = 10.0;
+  static const double paddingBackButton = 110.0;
+  static const double paddingBackButtonChildren = 10.0;
+  static const double paddingBackButtonIconSize = 25.0;
+  static const double textStyleBackButtonFontSize = 23.0;
 }
