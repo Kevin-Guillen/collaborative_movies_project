@@ -9,7 +9,10 @@ import '../utils/movie_string.dart';
 class MoviesPage extends StatefulWidget {
   final IMoviesBloc bloc;
 
-  const MoviesPage({Key? key, required this.bloc}) : super(key: key);
+  const MoviesPage({
+    Key? key,
+    required this.bloc,
+  }) : super(key: key);
 
   @override
   _MoviesPageState createState() => _MoviesPageState();
@@ -18,6 +21,7 @@ class MoviesPage extends StatefulWidget {
 class _MoviesPageState extends State<MoviesPage> {
   Movies? _swiperTrendingMovies;
   Movies? _gridDiscoverMovies;
+  late bool _isSearching;
 
   void _getTrendingMovies() {
     widget.bloc.cardSwiperMoviesStream.listen(
@@ -44,6 +48,7 @@ class _MoviesPageState extends State<MoviesPage> {
     widget.bloc.fetchDiscoverMovies();
     _getTrendingMovies();
     _getDiscoverMovies();
+    _isSearching = false;
   }
 
   @override
@@ -54,40 +59,19 @@ class _MoviesPageState extends State<MoviesPage> {
         preferredSize: Size.fromHeight(
           UiConstants.appBarHeight,
         ),
-        child: Container(
-          color: Colors.black,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(
-                  UiConstants.childrenPadding,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: UiConstants.appBarTopPadding,
-                  ),
-                  child: Text(
-                    "Movies App",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.purple,
-                      fontSize: UiConstants.titleFontSize,
-                      fontFamily: 'Play-Bold',
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: UiConstants.searchBarSidesPadding,
-                  right: UiConstants.searchBarSidesPadding,
-                ),
-                child: TextField(
+        child: AppBar(
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          title: !_isSearching
+              ? Image.asset(
+                  MovieStrings.brhokeLogo,
+                  height: UiConstants.logoHeight,
+                )
+              : TextField(
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: UiConstants.searchTextFontSize,
-                    fontFamily: 'Play-Bold',
+                    fontFamily: MovieStrings.textStyleFontFamily,
                   ),
                   decoration: InputDecoration(
                     hintText: MovieStrings.inputText,
@@ -95,15 +79,8 @@ class _MoviesPageState extends State<MoviesPage> {
                       color: Colors.grey,
                       fontWeight: FontWeight.w600,
                     ),
-                    suffixIcon: const Icon(
-                      Icons.search_rounded,
-                      color: Colors.purple,
-                      size: UiConstants.searchIconSize,
-                    ),
-                    contentPadding: const EdgeInsets.only(
-                      left: UiConstants.searchTextPadding,
-                      right: UiConstants.searchTextPadding,
-                      top: UiConstants.searchTextPadding,
+                    contentPadding: const EdgeInsets.all(
+                      UiConstants.searchTextPadding,
                     ),
                     filled: true,
                     fillColor: Colors.white12,
@@ -112,9 +89,46 @@ class _MoviesPageState extends State<MoviesPage> {
                     widget.bloc.fetchByMovieName(textField);
                   },
                 ),
-              ),
-            ],
+          leading: IconButton(
+            icon: Icon(
+              Icons.view_headline_outlined,
+              color: Colors.purple,
+              size: UiConstants.iconSize,
+            ),
+            onPressed: () {},
           ),
+          actions: [
+            _isSearching
+                ? IconButton(
+                    icon: Icon(
+                      Icons.cancel,
+                      color: Colors.purple,
+                      size: UiConstants.iconSize,
+                    ),
+                    onPressed: () {
+                      setState(
+                        () {
+                          _isSearching = false;
+                          widget.bloc.fetchTrendingMovies();
+                        },
+                      );
+                    },
+                  )
+                : IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.purple,
+                      size: UiConstants.iconSize,
+                    ),
+                    onPressed: () {
+                      setState(
+                        () {
+                          _isSearching = true;
+                        },
+                      );
+                    },
+                  ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
