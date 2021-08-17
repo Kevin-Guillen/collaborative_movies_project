@@ -7,45 +7,41 @@ class MovieDetailButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: UiConstants.paddingBackButton,
-      ),
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.resolveWith(
-            (states) => Color.fromARGB(
-              255,
-              224,
-              18,
-              102,
-            ),
+    return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.resolveWith(
+          (states) => Color.fromARGB(
+            255,
+            224,
+            18,
+            102,
           ),
         ),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(
-                UiConstants.paddingBackButtonChildren,
-              ),
-              child: Icon(
-                Icons.arrow_back_sharp,
-                size: UiConstants.paddingBackButtonIconSize,
-                color: Colors.black,
-              ),
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(
+              UiConstants.paddingBackButtonChildren,
             ),
-            Text(
-              MovieStrings.backButtonText,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: UiConstants.textStyleBackButtonFontSize,
-              ),
+            child: Icon(
+              Icons.arrow_back_sharp,
+              size: UiConstants.paddingBackButtonIconSize,
+              color: Colors.black,
             ),
-          ],
-        ),
+          ),
+          Text(
+            MovieStrings.backButtonText,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: UiConstants.textStyleBackButtonFontSize,
+            ),
+          ),
+        ],
       ),
     );
   }
