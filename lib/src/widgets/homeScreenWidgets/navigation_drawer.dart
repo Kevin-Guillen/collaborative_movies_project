@@ -55,7 +55,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       child: SafeArea(
         child: Drawer(
           child: Container(
-            color: Colors.purple,
+            color: Color.fromARGB(
+              255,
+              224,
+              18,
+              102,
+            ),
             child: Column(
               children: [
                 Padding(
@@ -101,7 +106,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                       backgroundColor: Colors.black,
                       child: Icon(
                         Icons.arrow_back,
-                        color: Colors.grey,
+                        color: Color.fromARGB(
+                          255,
+                          224,
+                          18,
+                          102,
+                        ),
                       ),
                     ),
                   ),
