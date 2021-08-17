@@ -63,7 +63,12 @@ class _MoviesPageState extends State<MoviesPage> {
         ),
         child: AppBar(
           iconTheme: IconThemeData(
-            color: Colors.purple,
+            color: Color.fromARGB(
+              255,
+              224,
+              18,
+              102,
+            ),
           ),
           backgroundColor: Colors.black,
           centerTitle: true,
@@ -99,7 +104,12 @@ class _MoviesPageState extends State<MoviesPage> {
                 ? IconButton(
                     icon: Icon(
                       Icons.cancel,
-                      color: Colors.purple,
+                      color: Color.fromARGB(
+                        255,
+                        224,
+                        18,
+                        102,
+                      ),
                       size: UiConstants.iconSize,
                     ),
                     onPressed: () {
@@ -114,7 +124,12 @@ class _MoviesPageState extends State<MoviesPage> {
                 : IconButton(
                     icon: Icon(
                       Icons.search,
-                      color: Colors.purple,
+                      color: Color.fromARGB(
+                        255,
+                        224,
+                        18,
+                        102,
+                      ),
                       size: UiConstants.iconSize,
                     ),
                     onPressed: () {

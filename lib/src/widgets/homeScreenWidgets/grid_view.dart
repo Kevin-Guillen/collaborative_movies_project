@@ -92,7 +92,12 @@ class GridMovies extends StatelessWidget {
               )
             : CircularProgressIndicator(
                 strokeWidth: UiConstants.progressIndicatorStrokeWidth,
-                backgroundColor: Colors.purple,
+                backgroundColor: Color.fromARGB(
+                  255,
+                  224,
+                  18,
+                  102,
+                ),
                 valueColor: AlwaysStoppedAnimation<Color>(
                   Colors.black,
                 ),

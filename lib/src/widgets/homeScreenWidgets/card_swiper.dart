@@ -71,7 +71,12 @@ class CardSwiper extends StatelessWidget {
                       );
                     },
                     control: SwiperControl(
-                      color: Colors.purple,
+                      color: Color.fromARGB(
+                        255,
+                        224,
+                        18,
+                        102,
+                      ),
                     ),
                     itemCount: trendingMovies!.results.length,
                     itemWidth: UiConstants.swiperCardsWidth,
@@ -80,7 +85,12 @@ class CardSwiper extends StatelessWidget {
                 )
               : CircularProgressIndicator(
                   strokeWidth: UiConstants.progressIndicatorStrokeWidth,
-                  backgroundColor: Colors.purple,
+                  backgroundColor: Color.fromARGB(
+                    255,
+                    224,
+                    18,
+                    102,
+                  ),
                   valueColor: AlwaysStoppedAnimation<Color>(
                     Colors.black,
                   ),

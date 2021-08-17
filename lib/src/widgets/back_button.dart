@@ -14,7 +14,12 @@ class MovieDetailButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.resolveWith(
-            (states) => Colors.blueGrey,
+            (states) => Color.fromARGB(
+              255,
+              224,
+              18,
+              102,
+            ),
           ),
         ),
         onPressed: () {
@@ -29,13 +34,13 @@ class MovieDetailButton extends StatelessWidget {
               child: Icon(
                 Icons.arrow_back_sharp,
                 size: UiConstants.paddingBackButtonIconSize,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             Text(
               MovieStrings.backButtonText,
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: UiConstants.textStyleBackButtonFontSize,
               ),
             ),
