@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'bloc/movies_bloc.dart';
-import 'ui/movies_page.dart';
-import 'utils/movie_string.dart';
+import 'src/bloc/movies_bloc.dart';
+import 'src/ui/movies_page.dart';
+import 'src/utils/movie_string.dart';
 
 void main() => runApp(MyApp());
 
