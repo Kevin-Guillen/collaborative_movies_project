@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/homeScreenWidgets/navigation_drawer.dart';
 import '../bloc/i_movies_bloc.dart';
 import '../widgets/homeScreenWidgets/card_swiper.dart';
 import '../widgets/homeScreenWidgets/grid_view.dart';
@@ -9,7 +10,10 @@ import '../utils/movie_string.dart';
 class MoviesPage extends StatefulWidget {
   final IMoviesBloc bloc;
 
-  const MoviesPage({Key? key, required this.bloc}) : super(key: key);
+  const MoviesPage({
+    Key? key,
+    required this.bloc,
+  }) : super(key: key);
 
   @override
   _MoviesPageState createState() => _MoviesPageState();
@@ -18,6 +22,7 @@ class MoviesPage extends StatefulWidget {
 class _MoviesPageState extends State<MoviesPage> {
   Movies? _swiperTrendingMovies;
   Movies? _gridDiscoverMovies;
+  late bool _isSearching;
 
   void _getTrendingMovies() {
     widget.bloc.cardSwiperMoviesStream.listen(
@@ -44,50 +49,34 @@ class _MoviesPageState extends State<MoviesPage> {
     widget.bloc.fetchDiscoverMovies();
     _getTrendingMovies();
     _getDiscoverMovies();
+    _isSearching = false;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white12,
+      drawer: NavigationDrawer(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(
           UiConstants.appBarHeight,
         ),
-        child: Container(
-          color: Colors.black,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(
-                  UiConstants.childrenPadding,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: UiConstants.appBarTopPadding,
-                  ),
-                  child: Text(
-                    "Movies App",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.purple,
-                      fontSize: UiConstants.titleFontSize,
-                      fontFamily: 'Play-Bold',
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: UiConstants.searchBarSidesPadding,
-                  right: UiConstants.searchBarSidesPadding,
-                ),
-                child: TextField(
+        child: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.purple,
+          ),
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          title: !_isSearching
+              ? Image.asset(
+                  MovieStrings.brhokeLogo,
+                  height: UiConstants.logoHeight,
+                )
+              : TextField(
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: UiConstants.searchTextFontSize,
-                    fontFamily: 'Play-Bold',
+                    fontFamily: MovieStrings.textStyleFontFamily,
                   ),
                   decoration: InputDecoration(
                     hintText: MovieStrings.inputText,
@@ -95,15 +84,8 @@ class _MoviesPageState extends State<MoviesPage> {
                       color: Colors.grey,
                       fontWeight: FontWeight.w600,
                     ),
-                    suffixIcon: const Icon(
-                      Icons.search_rounded,
-                      color: Colors.purple,
-                      size: UiConstants.searchIconSize,
-                    ),
-                    contentPadding: const EdgeInsets.only(
-                      left: UiConstants.searchTextPadding,
-                      right: UiConstants.searchTextPadding,
-                      top: UiConstants.searchTextPadding,
+                    contentPadding: const EdgeInsets.all(
+                      UiConstants.searchTextPadding,
                     ),
                     filled: true,
                     fillColor: Colors.white12,
@@ -112,9 +94,38 @@ class _MoviesPageState extends State<MoviesPage> {
                     widget.bloc.fetchByMovieName(textField);
                   },
                 ),
-              ),
-            ],
-          ),
+          actions: [
+            _isSearching
+                ? IconButton(
+                    icon: Icon(
+                      Icons.cancel,
+                      color: Colors.purple,
+                      size: UiConstants.iconSize,
+                    ),
+                    onPressed: () {
+                      setState(
+                        () {
+                          _isSearching = false;
+                          widget.bloc.fetchTrendingMovies();
+                        },
+                      );
+                    },
+                  )
+                : IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.purple,
+                      size: UiConstants.iconSize,
+                    ),
+                    onPressed: () {
+                      setState(
+                        () {
+                          _isSearching = true;
+                        },
+                      );
+                    },
+                  ),
+          ],
         ),
       ),
       body: SingleChildScrollView(

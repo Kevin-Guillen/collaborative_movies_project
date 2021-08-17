@@ -20,4 +20,8 @@ abstract class MovieStrings {
   static const String defaultOverview = 'Could not find overview';
   static const String defaultReleaseDate = 'Could not find date';
   static const String defaultVoteAverage = '-';
+  static const String backButtonText = "BACK";
+  static const String brhokeLogo = "assets/images/brhokeLogo.png";
+  static const String textStyleFontFamily = "Play-Bold";
+  static const String moviesAppTitle = "Brhoke Movies App";
 }
