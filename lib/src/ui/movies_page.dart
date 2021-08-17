@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/homeScreenWidgets/navigation_drawer.dart';
 import '../bloc/i_movies_bloc.dart';
 import '../widgets/homeScreenWidgets/card_swiper.dart';
 import '../widgets/homeScreenWidgets/grid_view.dart';
@@ -55,11 +56,15 @@ class _MoviesPageState extends State<MoviesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white12,
+      drawer: NavigationDrawer(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(
           UiConstants.appBarHeight,
         ),
         child: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.purple,
+          ),
           backgroundColor: Colors.black,
           centerTitle: true,
           title: !_isSearching
@@ -89,14 +94,6 @@ class _MoviesPageState extends State<MoviesPage> {
                     widget.bloc.fetchByMovieName(textField);
                   },
                 ),
-          leading: IconButton(
-            icon: Icon(
-              Icons.view_headline_outlined,
-              color: Colors.purple,
-              size: UiConstants.iconSize,
-            ),
-            onPressed: () {},
-          ),
           actions: [
             _isSearching
                 ? IconButton(

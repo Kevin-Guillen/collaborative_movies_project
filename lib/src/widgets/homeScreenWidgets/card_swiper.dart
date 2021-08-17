@@ -37,7 +37,7 @@ class CardSwiper extends StatelessWidget {
               ),
             ),
           ),
-          trendingMovies != null
+          trendingMovies != null && trendingMovies!.results.isNotEmpty
               ? Container(
                   height: UiConstants.swiperCardsHeight,
                   child: Swiper(
