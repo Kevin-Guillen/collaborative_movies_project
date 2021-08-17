@@ -50,7 +50,7 @@ abstract class UiConstants {
 
   // back_button
   static const double paddingBackButtonDetails = 10.0;
-  static const double paddingBackButton = 110.0;
+  static const double paddingBackButton = 90.0;
   static const double paddingBackButtonChildren = 10.0;
   static const double paddingBackButtonIconSize = 25.0;
   static const double textStyleBackButtonFontSize = 23.0;
@@ -124,7 +124,7 @@ abstract class UiConstants {
   static const String developersPosition = 'Flutter Developer Trainee';
 
   //navigation_drawer
-  static const double drawerBottomPadding = 300.0;
+  static const double drawerBottomPadding = 100.0;
   static const double drawerContentTopPadding = 25.0;
   static const double drawerHeaderContainerHeight = 55.0;
   static const String drawerHeaderText = 'Developers';
