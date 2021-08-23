@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'custom_card.dart';
 import '../../utils/ui_constants.dart';
 import 'drawer_profiles.dart';
 
-class Cards extends StatelessWidget {
-  const Cards({
+class ProfileCard extends StatelessWidget {
+  const ProfileCard({
     Key? key,
     required this.profile,
   }) : super(
@@ -38,7 +39,9 @@ class Cards extends StatelessWidget {
         ),
         onTap: () => Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => profile.widget,
+            builder: (context) => CustomCard(
+              profile: profile.widget,
+            ),
           ),
         ),
       ),

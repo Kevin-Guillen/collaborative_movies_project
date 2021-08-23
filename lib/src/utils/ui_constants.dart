@@ -4,6 +4,7 @@ abstract class UiConstants {
   static const double movieTypeTextPadding = 10.0;
   static const double movieTypeTitleFontSize = 25.0;
   static const double progressIndicatorStrokeWidth = 5.0;
+  static const String emptySearchResult = "assets/images/movies_not_found.png";
 
   // movies_page appBar
   static const double appBarHeight = 75.0;
@@ -124,7 +125,6 @@ abstract class UiConstants {
   static const String developersPosition = 'Flutter Developer Trainee';
 
   //navigation_drawer
-  static const double drawerBottomPadding = 100.0;
   static const double drawerContentTopPadding = 25.0;
   static const double drawerHeaderContainerHeight = 55.0;
   static const String drawerHeaderText = 'Developers';
