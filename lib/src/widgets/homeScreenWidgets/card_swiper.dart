@@ -83,17 +83,8 @@ class CardSwiper extends StatelessWidget {
                     layout: SwiperLayout.STACK,
                   ),
                 )
-              : CircularProgressIndicator(
-                  strokeWidth: UiConstants.progressIndicatorStrokeWidth,
-                  backgroundColor: Color.fromARGB(
-                    255,
-                    224,
-                    18,
-                    102,
-                  ),
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Colors.black,
-                  ),
+              : Image.asset(
+                  UiConstants.emptySearchResult,
                 ),
         ],
       ),
