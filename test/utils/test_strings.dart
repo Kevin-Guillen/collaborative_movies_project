@@ -1,4 +1,4 @@
-abstract class TestingStrings {
+abstract class TestStrings {
   //api_test
   static const String apiTestGroupString = "Api Testing";
   static const String trendingMoviesTestDescription =
