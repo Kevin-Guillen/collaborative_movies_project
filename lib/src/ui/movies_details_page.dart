@@ -21,58 +21,60 @@ class MovieDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(
-          UiConstants.paddingBackButtonDetails,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(
+            UiConstants.paddingBackButtonDetails,
+          ),
+          child: MovieDetailButton(),
         ),
-        child: MovieDetailButton(),
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(
-          UiConstants.bodyPadding,
-        ),
-        decoration: const BoxDecoration(
-          color: Colors.black,
-        ),
-        child: CustomScrollView(
-          slivers: <Widget>[
-            CustomAppBar(
-              movieImage: movieImage,
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  const SizedBox(
-                    height: UiConstants.detailsSizeBoxHeight,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: UiConstants.widgetPadding,
-                    ),
-                    child: Row(
-                      children: [
-                        MovieDetailsImage(
-                          movieImage: movieImage,
-                        ),
-                        Expanded(
-                          child: MovieMainInfo(
-                            title: title,
-                            releaseDate: releaseDate,
-                            voteAverage: voteAverage.toString(),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  MovieDescription(
-                    overView: overView,
-                  ),
-                ],
+        body: Container(
+          padding: const EdgeInsets.all(
+            UiConstants.bodyPadding,
+          ),
+          decoration: const BoxDecoration(
+            color: Colors.black,
+          ),
+          child: CustomScrollView(
+            slivers: <Widget>[
+              CustomAppBar(
+                movieImage: movieImage,
               ),
-            )
-          ],
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    const SizedBox(
+                      height: UiConstants.detailsSizeBoxHeight,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: UiConstants.widgetPadding,
+                      ),
+                      child: Row(
+                        children: [
+                          MovieDetailsImage(
+                            movieImage: movieImage,
+                          ),
+                          Expanded(
+                            child: MovieMainInfo(
+                              title: title,
+                              releaseDate: releaseDate,
+                              voteAverage: voteAverage.toString(),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    MovieDescription(
+                      overView: overView,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
