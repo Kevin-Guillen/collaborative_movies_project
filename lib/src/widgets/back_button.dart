@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/ui_constants.dart';
-import '../utils/movie_string.dart';
+import '../utils/movies_strings.dart';
+import '../utils/colors_movies.dart';
 
 class MovieDetailButton extends StatelessWidget {
   MovieDetailButton();
@@ -10,12 +11,7 @@ class MovieDetailButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith(
-          (states) => Color.fromARGB(
-            255,
-            224,
-            18,
-            102,
-          ),
+          (states) => ColorsMovies.colorARGB,
         ),
       ),
       onPressed: () {
@@ -35,7 +31,7 @@ class MovieDetailButton extends StatelessWidget {
             ),
           ),
           Text(
-            MovieStrings.backButtonText,
+            MoviesStrings.backButtonText,
             style: TextStyle(
               color: Colors.black,
               fontSize: UiConstants.textStyleBackButtonFontSize,

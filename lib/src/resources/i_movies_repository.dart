@@ -1,6 +1,6 @@
 import '../model/movies.dart';
 
-abstract class IMovieRepository {
+abstract class IMoviesRepository {
   Future<Movies> fetchTrendingMovies();
 
   Future<Movies> fetchDiscoverMovies();

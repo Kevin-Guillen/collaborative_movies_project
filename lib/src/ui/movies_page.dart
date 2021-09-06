@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import '../widgets/homeScreenWidgets/navigation_drawer.dart';
 import '../bloc/i_movies_bloc.dart';
-import '../widgets/homeScreenWidgets/card_swiper.dart';
-import '../widgets/homeScreenWidgets/grid_view.dart';
+import '../card_swiper_events.dart';
+import '../events.dart';
+import '../grid_movies_events.dart';
 import '../model/movies.dart';
+import '../state_type.dart';
+import '../utils/movies_strings.dart';
 import '../utils/ui_constants.dart';
-import '../utils/movie_string.dart';
+import '../widgets/homeScreenWidgets/navigation_drawer.dart';
+import '../utils/colors_movies.dart';
 
 class MoviesPage extends StatefulWidget {
   final IMoviesBloc bloc;
@@ -20,35 +23,13 @@ class MoviesPage extends StatefulWidget {
 }
 
 class _MoviesPageState extends State<MoviesPage> {
-  Movies? _swiperTrendingMovies;
-  Movies? _gridDiscoverMovies;
   late bool _isSearching;
-
-  void _getTrendingMovies() {
-    widget.bloc.cardSwiperMoviesStream.listen(
-      (getTrendingMoviesEvent) {
-        _swiperTrendingMovies = getTrendingMoviesEvent;
-        setState(() {});
-      },
-    );
-  }
-
-  void _getDiscoverMovies() {
-    widget.bloc.gridMoviesStream.listen(
-      (getDiscoverMoviesEvent) {
-        _gridDiscoverMovies = getDiscoverMoviesEvent;
-        setState(() {});
-      },
-    );
-  }
 
   @override
   void initState() {
     super.initState();
-    widget.bloc.fetchTrendingMovies();
-    widget.bloc.fetchDiscoverMovies();
-    _getTrendingMovies();
-    _getDiscoverMovies();
+    widget.bloc.getMoviesState(Events.fetchTrendingMovies);
+    widget.bloc.getMoviesState(Events.fetchDiscoverMovies);
     _isSearching = false;
   }
 
@@ -63,28 +44,23 @@ class _MoviesPageState extends State<MoviesPage> {
         ),
         child: AppBar(
           iconTheme: IconThemeData(
-            color: Color.fromARGB(
-              255,
-              224,
-              18,
-              102,
-            ),
+            color: ColorsMovies.colorARGB,
           ),
           backgroundColor: Colors.black,
           centerTitle: true,
           title: !_isSearching
               ? Image.asset(
-                  MovieStrings.brhokeLogo,
+                  MoviesStrings.brhokeLogo,
                   height: UiConstants.logoHeight,
                 )
               : TextField(
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: UiConstants.searchTextFontSize,
-                    fontFamily: MovieStrings.textStyleFontFamily,
+                    fontFamily: MoviesStrings.textStyleFontFamily,
                   ),
                   decoration: InputDecoration(
-                    hintText: MovieStrings.inputText,
+                    hintText: MoviesStrings.inputText,
                     hintStyle: const TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w600,
@@ -104,19 +80,15 @@ class _MoviesPageState extends State<MoviesPage> {
                 ? IconButton(
                     icon: Icon(
                       Icons.cancel,
-                      color: Color.fromARGB(
-                        255,
-                        224,
-                        18,
-                        102,
-                      ),
+                      color: ColorsMovies.colorARGB,
                       size: UiConstants.iconSize,
                     ),
                     onPressed: () {
                       setState(
                         () {
                           _isSearching = false;
-                          widget.bloc.fetchTrendingMovies();
+                          widget.bloc
+                              .getMoviesState(Events.fetchTrendingMovies);
                         },
                       );
                     },
@@ -124,12 +96,7 @@ class _MoviesPageState extends State<MoviesPage> {
                 : IconButton(
                     icon: Icon(
                       Icons.search,
-                      color: Color.fromARGB(
-                        255,
-                        224,
-                        18,
-                        102,
-                      ),
+                      color: ColorsMovies.colorARGB,
                       size: UiConstants.iconSize,
                     ),
                     onPressed: () {
@@ -150,17 +117,45 @@ class _MoviesPageState extends State<MoviesPage> {
           ),
           child: Column(
             children: <Widget>[
-              CardSwiper(
-                trendingMovies: _swiperTrendingMovies,
-                isTextFieldEmpty: widget.bloc.isTextFieldEmpty,
+              StreamBuilder<StateType>(
+                initialData: _getInitialData(),
+                stream: widget.bloc.cardSwiperMoviesStream,
+                builder: (context, AsyncSnapshot<StateType> snapshot) {
+                  return snapshot.hasData
+                      ? CardSwiperEvents(
+                          state: snapshot.data!,
+                          isTextFieldEmpty: widget.bloc.isTextFieldEmpty,
+                        )
+                      : Center(
+                          child: CircularProgressIndicator(),
+                        );
+                },
               ),
-              GridMovies(
-                discoverMovies: _gridDiscoverMovies,
+              StreamBuilder<StateType>(
+                initialData: _getInitialData(),
+                stream: widget.bloc.gridMoviesStream,
+                builder: (context, AsyncSnapshot<StateType> snapshot) {
+                  return snapshot.hasData
+                      ? GridMoviesEvents(
+                          state: snapshot.data!,
+                        )
+                      : Center(
+                          child: CircularProgressIndicator(),
+                        );
+                },
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  StateType _getInitialData() {
+    return StateType(
+      stateType: MoviesStateType.loading,
+      movies: Movies(
+          error: false, page: 0, totalPages: 0, totalResults: 0, results: []),
     );
   }
 }

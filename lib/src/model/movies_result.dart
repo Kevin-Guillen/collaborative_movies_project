@@ -1,4 +1,4 @@
-import '../utils/movie_string.dart';
+import '../utils/movies_strings.dart';
 
 class MoviesResult {
   int id;
@@ -43,14 +43,14 @@ class MoviesResult {
     return MoviesResult(
       id: parsedJson['id'],
       voteAverage:
-          parsedJson['vote_average'] ?? MovieStrings.defaultVoteAverage,
-      title: parsedJson['title'] ?? MovieStrings.defaultTitle,
+          parsedJson['vote_average'] ?? MoviesStrings.defaultVoteAverage,
+      title: parsedJson['title'] ?? MoviesStrings.defaultTitle,
       posterPath: parsedJson['poster_path'] != null
-          ? MovieStrings.imagesPath + parsedJson['poster_path']
-          : MovieStrings.defaultImage,
-      overView: parsedJson['overview'] ?? MovieStrings.defaultOverview,
+          ? MoviesStrings.imagesPath + parsedJson['poster_path']
+          : MoviesStrings.defaultImage,
+      overView: parsedJson['overview'] ?? MoviesStrings.defaultOverview,
       releaseDate:
-          parsedJson['release_date'] ?? MovieStrings.defaultReleaseDate,
+          parsedJson['release_date'] ?? MoviesStrings.defaultReleaseDate,
       genreIDs: _genreListResult,
       voteCount: parsedJson['vote_count'],
       video: parsedJson['video'] ?? false,

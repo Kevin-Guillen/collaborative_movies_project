@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'custom_card.dart';
 import '../../utils/ui_constants.dart';
-import 'drawer_profiles.dart';
+import 'profile.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard({

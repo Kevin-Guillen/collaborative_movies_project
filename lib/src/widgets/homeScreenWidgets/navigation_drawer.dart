@@ -3,8 +3,9 @@ import '../../ui/presentation_cards/brian_card.dart';
 import '../../ui/presentation_cards/horacio_card.dart';
 import '../../ui/presentation_cards/kevin_card.dart';
 import '../../utils/ui_constants.dart';
-import '../../widgets/homeScreenWidgets/drawer_profiles.dart';
+import '../../widgets/homeScreenWidgets/profile.dart';
 import '../../widgets/homeScreenWidgets/profile_card.dart';
+import '../../utils/colors_movies.dart';
 
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -51,12 +52,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     return SafeArea(
       child: Drawer(
         child: Container(
-          color: Color.fromARGB(
-            255,
-            224,
-            18,
-            102,
-          ),
+          color: ColorsMovies.colorARGB,
           child: Column(
             children: [
               Padding(
@@ -102,12 +98,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                     backgroundColor: Colors.black,
                     child: Icon(
                       Icons.arrow_back,
-                      color: Color.fromARGB(
-                        255,
-                        224,
-                        18,
-                        102,
-                      ),
+                      color: ColorsMovies.colorARGB
                     ),
                   ),
                 ),

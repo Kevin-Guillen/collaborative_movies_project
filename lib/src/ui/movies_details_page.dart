@@ -3,8 +3,8 @@ import '../widgets/back_button.dart';
 import 'package:movies_widgets/movies_project_widgets.dart';
 import '../utils/ui_constants.dart';
 
-class MovieDetailsPage extends StatelessWidget {
-  const MovieDetailsPage({
+class MoviesDetailsPage extends StatelessWidget {
+  const MoviesDetailsPage({
     Key? key,
     required this.overView,
     required this.movieImage,
@@ -17,7 +17,7 @@ class MovieDetailsPage extends StatelessWidget {
   final String movieImage;
   final String title;
   final String releaseDate;
-  final num voteAverage;
+  final String voteAverage;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class MovieDetailsPage extends StatelessWidget {
                             child: MovieMainInfo(
                               title: title,
                               releaseDate: releaseDate,
-                              voteAverage: voteAverage.toString(),
+                              voteAverage: voteAverage,
                             ),
                           )
                         ],
