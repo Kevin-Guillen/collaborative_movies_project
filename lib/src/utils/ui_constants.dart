@@ -1,46 +1,46 @@
 abstract class UiConstants {
-  // movies_page
+  //movies_page
   static const double bodyPadding = 10.0;
   static const double movieTypeTextPadding = 10.0;
   static const double movieTypeTitleFontSize = 25.0;
   static const double progressIndicatorStrokeWidth = 5.0;
   static const String emptySearchResult = "assets/images/movies_not_found.png";
 
-  // movies_page appBar
+  //movies_page appBar
   static const double appBarHeight = 75.0;
   static const double appBarTopPadding = 20.0;
   static const double titleFontSize = 40.0;
   static const double logoHeight = 60.0;
   static const double iconSize = 30.0;
 
-  // movies_page searchBar
+  //movies_page searchBar
   static const double searchTextFontSize = 16.0;
   static const double searchIconSize = 27.0;
   static const double childrenPadding = 4.0;
   static const double searchBarSidesPadding = 22.0;
   static const double searchTextPadding = 15.0;
 
-  // widgets/movie_details_page
+  //widgets/movie_details_page
   static const double detailsSizeBoxHeight = 10.0;
 
-  // widgets/card_swiper
+  //widgets/card_swiper
   static const double swiperCardsHeight = 250.0;
   static const double swiperCardsWidth = 250.0;
 
-  // widgets/grid_view
+  //widgets/grid_view
   static const double gridCardsBorderRadius = 30.0;
   static const int gridColumns = 2;
   static const double gridTileMargin = 5.0;
   static const double mainAxisExtent = 280.0;
 
-  // widgets/custom_appbar
+  //widgets/custom_appbar
   static const double movieDetailsAppBarExpandedHeight = 350.0;
 
-  // widgets/movie_description
+  //widgets/movie_description
   static const double paddingMovieDescription = 20.0;
   static const double descriptionFontSize = 18.0;
 
-  // widgets/movie_main_info
+  //widgets/movie_main_info
   static const double widgetPadding = 20.0;
   static const double posterPathBorderRadius = 20.0;
   static const double posterPathHeight = 150.0;
@@ -49,7 +49,7 @@ abstract class UiConstants {
   static const double releaseDateFontSize = 20.0;
   static const double voteAverageFontSize = 36.0;
 
-  // back_button
+  //back_button
   static const double paddingBackButtonDetails = 10.0;
   static const double paddingBackButton = 90.0;
   static const double paddingBackButtonChildren = 10.0;
@@ -79,7 +79,7 @@ abstract class UiConstants {
   static const String kevinFullName = 'Kevin Guillen';
   static const String kevinPhoneNumber = '+54 9 11 2494 607181';
   static const String cellPhoneText = 'Cell Phone';
-  static const String kevinEmail = 'kevin.guillen@globant.com';
+  static const String kevinEmail = 'kevinleonelguillen@gmail.com';
   static const String emailText = 'Email';
 
   //horacio card
@@ -101,7 +101,7 @@ abstract class UiConstants {
   static const String horacioFullName = 'Horacio Duca';
   static const String horacioPhone = '+54 9 2284-534691';
   static const String pressAndCallMe = 'Press and call me!';
-  static const String horacioEmail = 'Horacio.duca@globant.com';
+  static const String horacioEmail = 'horacioduca23@gmail.com';
   static const String orSendMeAnEmail = 'Or send me an email';
 
   //brian card
@@ -113,7 +113,7 @@ abstract class UiConstants {
   static const double brianCompleteNameFontSize = 25.0;
   static const double brianTextsLetterSpacing = 3.0;
   static const double brianTextsPadding = 5.0;
-  static const String brianEmail = 'brian.setzes@globant.com';
+  static const String brianEmail = 'briansetzes95@gmail.com';
   static const double brianEmailFontSize = 20.0;
   static const double radius = 100;
   static const int backgroundAlphaValue = 255;
@@ -140,4 +140,23 @@ abstract class UiConstants {
   static const double profileNamesFontSize = 20.0;
   static const double profileImageRadius = 30.0;
   static const double profileArrowIconSize = 45.0;
+
+  //colors
+  static const int colorMoviesA = 255;
+  static const int colorMoviesR = 224;
+  static const int coloMoviesG = 18;
+  static const int colorMoviesB = 102;
+
+  //GridMoviesEvents state.stateType == loading
+  static const int itemCountForDefect = 20;
+
+  //state.stateType == error
+  static const double stateErrorL = 10.0;
+  static const double stateErrorT = 100.0;
+  static const double stateErrorR = 10.0;
+  static const double stateErrorB = 100.0;
+  static const double paddingIcon = 15.0;
+  static const double sizeIcon = 35.0;
+  static const String stateErrorText = 'NO SERVICE AVAILABLE';
+  static const double stateErrorStyleFontSize = 25.0;
 }

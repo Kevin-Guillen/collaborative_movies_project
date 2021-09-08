@@ -1,17 +1,19 @@
-import 'movie_result.dart';
+import 'movies_result.dart';
 
 class Movies {
   final int page;
   final int totalResults;
   final int totalPages;
-  final List<MoviesResult> results;
+  final List<MoviesResult>? results;
+  final bool error;
 
   Movies({
-    required this.page,
-    required this.totalResults,
-    required this.totalPages,
-    required this.results,
-  });
+    this.error = false,
+    this.page = 0,
+    this.totalResults = 0,
+    this.totalPages = 0,
+    List<MoviesResult>? results,
+  }) : results = results;
 
   factory Movies.fromJson(Map<String, dynamic> parsedJson) {
     var results = parsedJson['results'] as List;
@@ -27,4 +29,6 @@ class Movies {
       results: _movieList,
     );
   }
+
+  bool get getError => error;
 }

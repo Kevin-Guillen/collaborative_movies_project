@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'src/bloc/movies_bloc.dart';
 import 'src/ui/movies_page.dart';
-import 'src/utils/movie_string.dart';
+import 'src/utils/movies_strings.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: MovieStrings.moviesAppTitle,
+      title: MoviesStrings.moviesAppTitle,
       home: MoviesPage(
         bloc: _moviesBloc,
       ),

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'movies_api_provider.dart';
 import '../model/movies.dart';
 
-class MoviesRepository extends IMovieRepository {
+class MoviesRepository extends IMoviesRepository {
   final moviesApiProvider = MoviesApiProvider();
 
   Future<Movies> fetchTrendingMovies() =>

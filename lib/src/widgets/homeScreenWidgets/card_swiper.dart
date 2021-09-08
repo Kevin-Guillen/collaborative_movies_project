@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import '../../ui/movies_details_page.dart';
-import '../../model/movies.dart';
+import '../../utils/movies_strings.dart';
 import '../../utils/ui_constants.dart';
-import '../../utils/movie_string.dart';
 
 class CardSwiper extends StatelessWidget {
   final bool isTextFieldEmpty;
-
-  final Movies? trendingMovies;
+  final Widget swiperChild;
 
   CardSwiper({
-    required this.trendingMovies,
     required this.isTextFieldEmpty,
+    required this.swiperChild,
   });
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
@@ -25,10 +22,10 @@ class CardSwiper extends StatelessWidget {
               padding: const EdgeInsets.only(
                 bottom: UiConstants.movieTypeTextPadding,
               ),
-              child: new Text(
+              child: Text(
                 isTextFieldEmpty
-                    ? MovieStrings.ifTrendingMoviesTitle
-                    : MovieStrings.ifSearchingMoviesTitle,
+                    ? MoviesStrings.trendingMoviesTitle
+                    : MoviesStrings.searchingMoviesTitle,
                 style: TextStyle(
                   fontSize: UiConstants.movieTypeTitleFontSize,
                   color: Colors.grey,
@@ -37,55 +34,10 @@ class CardSwiper extends StatelessWidget {
               ),
             ),
           ),
-          trendingMovies != null && trendingMovies!.results.isNotEmpty
-              ? Container(
-                  height: UiConstants.swiperCardsHeight,
-                  child: Swiper(
-                    itemBuilder: (
-                      BuildContext context,
-                      int index,
-                    ) {
-                      return InkWell(
-                        child: Image.network(
-                          trendingMovies!.results[index].posterPath!,
-                          fit: BoxFit.fill,
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MovieDetailsPage(
-                                movieImage:
-                                    trendingMovies!.results[index].posterPath!,
-                                overView:
-                                    trendingMovies!.results[index].overView!,
-                                releaseDate:
-                                    trendingMovies!.results[index].releaseDate,
-                                title: trendingMovies!.results[index].title,
-                                voteAverage:
-                                    trendingMovies!.results[index].voteAverage,
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    control: SwiperControl(
-                      color: Color.fromARGB(
-                        255,
-                        224,
-                        18,
-                        102,
-                      ),
-                    ),
-                    itemCount: trendingMovies!.results.length,
-                    itemWidth: UiConstants.swiperCardsWidth,
-                    layout: SwiperLayout.STACK,
-                  ),
-                )
-              : Image.asset(
-                  UiConstants.emptySearchResult,
-                ),
+          Container(
+            height: UiConstants.swiperCardsHeight,
+            child: swiperChild,
+          )
         ],
       ),
     );

@@ -23,7 +23,7 @@ void main() {
         results: [],
         page: TestStrings.defaultPage,
         totalPages: TestStrings.defaultTotalPages,
-        totalResults: TestStrings.defaultTotalResults,
+        totalResults: TestStrings.defaultTotalResults, error: false,
       );
       bloc = MoviesBloc(repository);
       when(repository.fetchTrendingMovies()).thenAnswer(

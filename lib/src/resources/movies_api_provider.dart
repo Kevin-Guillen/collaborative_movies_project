@@ -1,66 +1,72 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../utils/movie_string.dart';
 import '../model/movies.dart';
+import '../utils/movies_strings.dart';
 
 class MoviesApiProvider {
   http.Client client = http.Client();
 
   Future<Movies> fetchTrendingMovies() async {
-    final trendingResponse = await client.get(
-      Uri.parse(
-        MovieStrings.trendingMoviesEndpoint + MovieStrings.apiKey,
-      ),
-    );
-    if (trendingResponse.statusCode == 200) {
-      return Movies.fromJson(
-        json.decode(
-          trendingResponse.body,
+    try {
+      final trendingResponse = await client.get(
+        Uri.parse(
+          MoviesStrings.trendingMoviesEndpoint + MoviesStrings.apiKey,
         ),
       );
-    } else {
-      throw Exception(
-        MovieStrings.moviesLoadingError,
-      );
+      if (trendingResponse.statusCode == 200) {
+        return Movies.fromJson(
+          json.decode(
+            trendingResponse.body,
+          ),
+        );
+      } else {
+        return Movies(error: true);
+      }
+    } catch (e) {
+      return Movies(error: true);
     }
   }
 
   Future<Movies> fetchDiscoverMovies() async {
-    final discoverResponse = await client.get(
-      Uri.parse(
-        MovieStrings.discoverMoviesEndpoint,
-      ),
-    );
-    if (discoverResponse.statusCode == 200) {
-      return Movies.fromJson(
-        json.decode(
-          discoverResponse.body,
+    try {
+      final discoverResponse = await client.get(
+        Uri.parse(
+          MoviesStrings.discoverMoviesEndpoint,
         ),
       );
-    } else {
-      throw Exception(
-        MovieStrings.moviesLoadingError,
-      );
+      if (discoverResponse.statusCode == 200) {
+        return Movies.fromJson(
+          json.decode(
+            discoverResponse.body,
+          ),
+        );
+      } else {
+        return Movies(error: true);
+      }
+    } catch (e) {
+      return Movies(error: true);
     }
   }
 
   Future<Movies> searchByMovieName(String movieName) async {
-    final searchResponse = await client.get(
-      Uri.parse(
-        MovieStrings.uriSearchClient + movieName,
-      ),
-    );
-    if (searchResponse.statusCode == 200) {
-      return Movies.fromJson(
-        json.decode(
-          searchResponse.body,
+    try {
+      final searchResponse = await client.get(
+        Uri.parse(
+          MoviesStrings.uriSearchClient + movieName,
         ),
       );
-    } else {
-      throw Exception(
-        MovieStrings.moviesLoadingError,
-      );
+      if (searchResponse.statusCode == 200) {
+        return Movies.fromJson(
+          json.decode(
+            searchResponse.body,
+          ),
+        );
+      } else {
+        return Movies(error: true);
+      }
+    } catch (e) {
+      return Movies(error: true);
     }
   }
 }
