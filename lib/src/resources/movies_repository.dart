@@ -9,8 +9,8 @@ class MoviesRepository extends IMoviesRepository {
   Future<Movies> fetchTrendingMovies() =>
       moviesApiProvider.fetchTrendingMovies();
 
-  Future<Movies> fetchDiscoverMovies() =>
-      moviesApiProvider.fetchDiscoverMovies();
+  Future<Movies> fetchDiscoverMovies(String movieName) =>
+      moviesApiProvider.fetchDiscoverMovies(movieName);
 
   Future<Movies> searchByMovieName(String movieName) =>
       moviesApiProvider.searchByMovieName(movieName);

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import '../bloc/i_movies_bloc.dart';
 import '../card_swiper_events.dart';
 import '../events.dart';
-import '../grid_movies_events.dart';
 import '../model/movies.dart';
 import '../state_type.dart';
 import '../utils/movies_strings.dart';
 import '../utils/ui_constants.dart';
 import '../widgets/homeScreenWidgets/navigation_drawer.dart';
 import '../utils/colors_movies.dart';
+import 'genres_grid.dart';
 
 class MoviesPage extends StatefulWidget {
   final IMoviesBloc bloc;
@@ -29,7 +29,6 @@ class _MoviesPageState extends State<MoviesPage> {
   void initState() {
     super.initState();
     widget.bloc.getMoviesState(Events.fetchTrendingMovies);
-    widget.bloc.getMoviesState(Events.fetchDiscoverMovies);
     _isSearching = false;
   }
 
@@ -131,19 +130,7 @@ class _MoviesPageState extends State<MoviesPage> {
                         );
                 },
               ),
-              StreamBuilder<StateType>(
-                initialData: _getInitialData(),
-                stream: widget.bloc.gridMoviesStream,
-                builder: (context, AsyncSnapshot<StateType> snapshot) {
-                  return snapshot.hasData
-                      ? GridMoviesEvents(
-                          state: snapshot.data!,
-                        )
-                      : Center(
-                          child: CircularProgressIndicator(),
-                        );
-                },
-              ),
+              GenresGrid(genresBloc: widget.bloc),
             ],
           ),
         ),

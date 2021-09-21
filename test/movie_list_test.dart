@@ -23,13 +23,11 @@ void main() {
         results: [],
         page: TestStrings.defaultPage,
         totalPages: TestStrings.defaultTotalPages,
-        totalResults: TestStrings.defaultTotalResults, error: false,
+        totalResults: TestStrings.defaultTotalResults,
+        error: false,
       );
       bloc = MoviesBloc(repository);
       when(repository.fetchTrendingMovies()).thenAnswer(
-        (_) async => movie,
-      );
-      when(repository.fetchDiscoverMovies()).thenAnswer(
         (_) async => movie,
       );
     },

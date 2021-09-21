@@ -16,21 +16,18 @@ class CardSwiper extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                bottom: UiConstants.movieTypeTextPadding,
-              ),
-              child: Text(
-                isTextFieldEmpty
-                    ? MoviesStrings.trendingMoviesTitle
-                    : MoviesStrings.searchingMoviesTitle,
-                style: TextStyle(
-                  fontSize: UiConstants.movieTypeTitleFontSize,
-                  color: Colors.grey,
-                  fontFamily: 'Play-Bold',
-                ),
+          Padding(
+            padding: const EdgeInsets.only(
+              bottom: UiConstants.movieTypeTextPadding,
+            ),
+            child: Text(
+              isTextFieldEmpty
+                  ? MoviesStrings.trendingMoviesTitle
+                  : MoviesStrings.searchingMoviesTitle,
+              style: TextStyle(
+                fontSize: UiConstants.movieTypeTitleFontSize,
+                color: Colors.grey,
+                fontFamily: 'Play-Bold',
               ),
             ),
           ),

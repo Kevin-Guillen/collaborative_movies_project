@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/back_button.dart';
+import '../widgets/global_back_button.dart';
 import 'package:movies_widgets/movies_project_widgets.dart';
 import '../utils/ui_constants.dart';
 
@@ -26,9 +26,9 @@ class MoviesDetailsPage extends StatelessWidget {
         backgroundColor: Colors.black,
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(
-            UiConstants.paddingBackButtonDetails,
+            UiConstants.paddingBackButton,
           ),
-          child: MovieDetailButton(),
+          child: GlobalBackButton(),
         ),
         body: Container(
           padding: const EdgeInsets.all(

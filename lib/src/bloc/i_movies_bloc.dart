@@ -8,7 +8,7 @@ abstract class IMoviesBloc extends Bloc {
 
   Stream<StateType> get gridMoviesStream;
 
-  void getMoviesState(Events event);
+  void getMoviesState(Events event, [String movieName = ""]);
 
   void fetchByMovieName(String textField);
 

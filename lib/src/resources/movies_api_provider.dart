@@ -11,7 +11,7 @@ class MoviesApiProvider {
     try {
       final trendingResponse = await client.get(
         Uri.parse(
-          MoviesStrings.trendingMoviesEndpoint + MoviesStrings.apiKey,
+          MoviesStrings.trendingMoviesEndpoint,
         ),
       );
       if (trendingResponse.statusCode == 200) {
@@ -28,11 +28,11 @@ class MoviesApiProvider {
     }
   }
 
-  Future<Movies> fetchDiscoverMovies() async {
+  Future<Movies> fetchDiscoverMovies(String movieName) async {
     try {
       final discoverResponse = await client.get(
         Uri.parse(
-          MoviesStrings.discoverMoviesEndpoint,
+          movieName,
         ),
       );
       if (discoverResponse.statusCode == 200) {
@@ -53,7 +53,7 @@ class MoviesApiProvider {
     try {
       final searchResponse = await client.get(
         Uri.parse(
-          MoviesStrings.uriSearchClient + movieName,
+          MoviesStrings.searchMoviesEndpoint + movieName,
         ),
       );
       if (searchResponse.statusCode == 200) {
