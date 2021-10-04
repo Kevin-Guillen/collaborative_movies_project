@@ -149,7 +149,7 @@ abstract class UiConstants {
   static const String dramaGenre = 'Drama';
   static const String adventureGenre = 'Adventure';
   static const String crimeGenre = 'Crime';
-  static const String documentaryGenre = 'Documentary';
+  static const String familyGenre = 'Family';
   static const String musicGenre = 'Music';
   static const String fantasyGenre = 'Fantasy';
   static const String historyGenre = 'History';

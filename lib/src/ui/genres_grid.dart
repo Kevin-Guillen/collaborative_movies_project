@@ -57,8 +57,8 @@ class _GenresGridState extends State<GenresGrid> {
 
     _genresList.add(
       GenreBox(
-        genreName: UiConstants.documentaryGenre,
-        gridEndpoint: MoviesStrings.documentaryDiscoverMoviesEndpoint,
+        genreName: UiConstants.familyGenre,
+        gridEndpoint: MoviesStrings.familyDiscoverMoviesEndpoint,
       ),
     );
 

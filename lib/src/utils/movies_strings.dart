@@ -15,8 +15,8 @@ abstract class MoviesStrings {
       uri + 'discover/movie?api_key=' + apiKey + '&with_genres=80';
   static const String dramaDiscoverMoviesEndpoint =
       uri + 'discover/movie?api_key=' + apiKey + '&with_genres=18';
-  static const String documentaryDiscoverMoviesEndpoint =
-      uri + 'discover/movie?api_key=' + apiKey + '&with_genres=99';
+  static const String familyDiscoverMoviesEndpoint =
+      uri + 'discover/movie?api_key=' + apiKey + '&with_genres=10751';
   static const String fantasyDiscoverMoviesEndpoint =
       uri + 'discover/movie?api_key=' + apiKey + '&with_genres=14';
   static const String historyDiscoverMoviesEndpoint =
