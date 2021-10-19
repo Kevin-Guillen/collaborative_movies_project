@@ -26,17 +26,6 @@ void main() {
       );
 
       test(
-        TestStrings.discoverMoviesTestDescription,
-        () async {
-          Movies movie = await moviesApiProvider.fetchDiscoverMovies();
-          expect(
-            movie.results,
-            isNotEmpty,
-          );
-        },
-      );
-
-      test(
         TestStrings.searchMovieTestDescription,
         () async {
           Movies movie = await moviesApiProvider.searchByMovieName(

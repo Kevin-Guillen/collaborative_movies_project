@@ -32,7 +32,7 @@ class MoviesBloc extends IMoviesBloc {
         searchByMovieNameEvent(movieName);
         break;
       case Events.fetchDiscoverMovies:
-        fetchDiscoverMoviesEvent();
+        fetchDiscoverMoviesEvent(movieName);
         break;
     }
   }
@@ -73,8 +73,9 @@ class MoviesBloc extends IMoviesBloc {
     }
   }
 
-  void fetchDiscoverMoviesEvent() async {
-    final discoverMoviesList = await _moviesRepository.fetchDiscoverMovies();
+  void fetchDiscoverMoviesEvent(String movieName) async {
+    final discoverMoviesList =
+        await _moviesRepository.fetchDiscoverMovies(movieName);
     if (!discoverMoviesList.getError) {
       _discoverMoviesStream.sink.add(
         StateType(

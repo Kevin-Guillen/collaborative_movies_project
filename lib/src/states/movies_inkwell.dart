@@ -19,25 +19,27 @@ class MoviesInkwell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Image.network(
-        moviePosterPath,
-        fit: BoxFit.fill,
-      ),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MoviesDetailsPage(
-              movieImage: moviePosterPath,
-              overView: movieOverview,
-              releaseDate: movieReleaseDate,
-              title: movieTitle,
-              voteAverage: movieVoteAverage,
+    return Material(
+      child: InkWell(
+        child: Image.network(
+          moviePosterPath,
+          fit: BoxFit.fill,
+        ),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MoviesDetailsPage(
+                movieImage: moviePosterPath,
+                overView: movieOverview,
+                releaseDate: movieReleaseDate,
+                title: movieTitle,
+                voteAverage: movieVoteAverage,
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

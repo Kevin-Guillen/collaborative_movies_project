@@ -34,16 +34,13 @@ class MockMoviesRepository extends _i1.Mock implements _i4.MoviesRepository {
   _i2.MoviesApiProvider get moviesApiProvider =>
       (super.noSuchMethod(Invocation.getter(#moviesApiProvider),
           returnValue: _FakeMoviesApiProvider()) as _i2.MoviesApiProvider);
+
   @override
   _i5.Future<_i3.Movies> fetchTrendingMovies() =>
       (super.noSuchMethod(Invocation.method(#fetchTrendingMovies, []),
               returnValue: Future<_i3.Movies>.value(_FakeMovies()))
           as _i5.Future<_i3.Movies>);
-  @override
-  _i5.Future<_i3.Movies> fetchDiscoverMovies() =>
-      (super.noSuchMethod(Invocation.method(#fetchDiscoverMovies, []),
-              returnValue: Future<_i3.Movies>.value(_FakeMovies()))
-          as _i5.Future<_i3.Movies>);
+
   @override
   _i5.Future<_i3.Movies> searchByMovieName(String? movieName) =>
       (super.noSuchMethod(Invocation.method(#searchByMovieName, [movieName]),

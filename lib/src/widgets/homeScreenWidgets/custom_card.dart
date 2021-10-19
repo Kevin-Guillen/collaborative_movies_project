@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/ui_constants.dart';
-import '../back_button.dart';
+import '../global_back_button.dart';
 
 class CustomCard extends StatelessWidget {
   final Color backgroundColor;
@@ -18,9 +18,9 @@ class CustomCard extends StatelessWidget {
       body: profile,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(
-          UiConstants.paddingBackButtonDetails,
+          UiConstants.paddingBackButton,
         ),
-        child: MovieDetailButton(),
+        child: GlobalBackButton(),
       ),
       backgroundColor: backgroundColor,
     );
